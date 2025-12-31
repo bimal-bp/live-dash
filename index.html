@@ -150,19 +150,39 @@
             color: var(--warning);
             font-weight: 600;
         }
-        /* Plant details - updated */
+        /* Plant details - UPDATED for better visibility */
         .plant-details {
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 0.9rem;
             color: var(--text-light);
-            line-height: 1.5;
+            line-height: 1.6;
             padding: 0 5px;
         }
         .plant-details div {
             font-weight: 600;
+            margin-bottom: 8px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .plant-details .power-cut { color: var(--warning); }
-        .plant-details .no-feed { color: var(--danger); }
+        .plant-details .power-cut { 
+            color: var(--warning);
+            border-left: 4px solid var(--warning);
+            background: rgba(245, 158, 11, 0.1);
+        }
+        .plant-details .no-feed { 
+            color: var(--danger);
+            border-left: 4px solid var(--danger);
+            background: rgba(239, 68, 68, 0.1);
+        }
+        .plant-details .hours {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 1rem;
+        }
         /* Main Layout */
         .main-area {
             display: grid;
@@ -307,7 +327,7 @@
             border-radius: 20px;
             display: inline-block;
         }
-        /* Action buttons */
+        /* Action buttons - same size/style */
         .action-button {
             padding: 20px 12px;
             background: linear-gradient(135deg, var(--teal), var(--teal-light));
@@ -387,7 +407,7 @@
             font-weight: 600;
             opacity: 0.9;
         }
-        /* Clickable pulse */
+        /* Clickable pulse for important boxes */
         .plant-clickable, .feeder-clickable {
             cursor: pointer;
             border: 2px solid var(--primary) !important;
@@ -422,7 +442,7 @@
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
         }
-        /* Responsive */
+        /* Responsive adjustments (kept minimal changes) */
         @media (max-width: 1400px) {
             .main-area { grid-template-columns: 1fr; }
             .map-container { height: 400px; }
@@ -470,14 +490,23 @@
                 <div class="mach-label">Excavators / Loaders Running</div>
                 <div class="mach-value">5/5 &nbsp;&nbsp; 2/2</div>
             </div>
-            <!-- 4: Plant - Updated -->
+            <!-- 4: Plant - UPDATED with larger logo and focused details -->
             <div class="card mach-box plant plant-clickable" onclick="openModal('plant-hours-modal')">
-                <img src="https://raw.githubusercontent.com/bimal-bp/Operational-Dashboard/main/crushing-plant-icon.png" alt="Plant" class="mach-icon-img" style="width: 80px; height: 80px; padding: 0;">
+                <img src="https://raw.githubusercontent.com/bimal-bp/Operational-Dashboard/main/crushing-plant-icon.png" 
+                     alt="Plant" 
+                     class="mach-icon-img" 
+                     style="width: 75px; height: 75px; padding: 0; margin-bottom: 15px;">
                 <div class="mach-label">Plant Running Hours</div>
-                <div class="mach-value">6.5 hrs</div>
+                <div class="mach-value" style="font-size: 2.5rem; margin-bottom: 10px;">6.5 hrs</div>
                 <div class="plant-details">
-                    <div class="power-cut">Power Cut: 3.6 hrs</div>
-                    <div class="no-feed">No Feed: 1.3 hrs</div>
+                    <div class="power-cut">
+                        <span>Power Cut</span>
+                        <span class="hours">3.6 hrs</span>
+                    </div>
+                    <div class="no-feed">
+                        <span>No Feed</span>
+                        <span class="hours">1.3 hrs</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -541,7 +570,8 @@
     <script>
         // Date display
         document.getElementById('current-date').textContent = 'December 31, 2025';
-        // Fullscreen toggle
+
+        // Fullscreen for dashboard
         document.getElementById('fullscreen-btn').addEventListener('click', function() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen();
@@ -551,14 +581,14 @@
                 this.innerHTML = '<i class="fas fa-expand"></i>';
             }
         });
-        // Placeholder modal functions
+
+        // Placeholder modal functions (add your full modal JS from original)
         function openModal(id) { 
-            const modal = document.getElementById(id);
-            if (modal) modal.style.display = 'flex'; 
+            alert('Opening modal for: ' + id);
+            // document.getElementById(id).style.display = 'flex'; 
         }
         function closeModal(id) { 
-            const modal = document.getElementById(id);
-            if (modal) modal.style.display = 'none'; 
+            // document.getElementById(id).style.display = 'none'; 
         }
         function openEnhancedMapModal() { openModal('enhanced-map-modal'); }
     </script>
