@@ -150,12 +150,12 @@
             color: var(--warning);
             font-weight: 600;
         }
-        /* Plant details */
+        /* Plant details - updated */
         .plant-details {
-            margin-top: 6px;
-            font-size: 0.85rem;
+            margin-top: 10px;
+            font-size: 0.9rem;
             color: var(--text-light);
-            line-height: 1.4;
+            line-height: 1.5;
             padding: 0 5px;
         }
         .plant-details div {
@@ -163,9 +163,6 @@
         }
         .plant-details .power-cut { color: var(--warning); }
         .plant-details .no-feed { color: var(--danger); }
-        .plant-details .jam { color: var(--orange); }
-        .plant-details .breakdown { color: var(--danger); }
-        .plant-details .maintenance { color: var(--purple); }
         /* Main Layout */
         .main-area {
             display: grid;
@@ -310,7 +307,7 @@
             border-radius: 20px;
             display: inline-block;
         }
-        /* Action buttons - same size/style */
+        /* Action buttons */
         .action-button {
             padding: 20px 12px;
             background: linear-gradient(135deg, var(--teal), var(--teal-light));
@@ -390,7 +387,7 @@
             font-weight: 600;
             opacity: 0.9;
         }
-        /* Clickable pulse for important boxes */
+        /* Clickable pulse */
         .plant-clickable, .feeder-clickable {
             cursor: pointer;
             border: 2px solid var(--primary) !important;
@@ -425,7 +422,7 @@
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
         }
-        /* Responsive adjustments (kept minimal changes) */
+        /* Responsive */
         @media (max-width: 1400px) {
             .main-area { grid-template-columns: 1fr; }
             .map-container { height: 400px; }
@@ -473,17 +470,14 @@
                 <div class="mach-label">Excavators / Loaders Running</div>
                 <div class="mach-value">5/5 &nbsp;&nbsp; 2/2</div>
             </div>
-            <!-- 4: Plant -->
+            <!-- 4: Plant - Updated -->
             <div class="card mach-box plant plant-clickable" onclick="openModal('plant-hours-modal')">
-                <img src="https://raw.githubusercontent.com/bimal-bp/Operational-Dashboard/main/crushing-plant-icon.png" alt="Plant" class="mach-icon-img" style="width: 60px; height: 60px; padding: 0;">
+                <img src="https://raw.githubusercontent.com/bimal-bp/Operational-Dashboard/main/crushing-plant-icon.png" alt="Plant" class="mach-icon-img" style="width: 80px; height: 80px; padding: 0;">
                 <div class="mach-label">Plant Running Hours</div>
                 <div class="mach-value">6.5 hrs</div>
                 <div class="plant-details">
                     <div class="power-cut">Power Cut: 3.6 hrs</div>
                     <div class="no-feed">No Feed: 1.3 hrs</div>
-                    <div class="jam">Boulder Jam: 0.1 hrs</div>
-                    <div class="breakdown">Breakdown: 1.0 hrs</div>
-                    <div class="maintenance">Maintenance: 1.7 hrs</div>
                 </div>
             </div>
         </div>
@@ -544,14 +538,10 @@
         </div>
     </div>
 
-    <!-- Modals remain the same as in your original code (only the dashboard layout was changed) -->
-    <!-- For brevity, I've kept placeholders; copy your existing modal HTML/JS here -->
-
     <script>
         // Date display
         document.getElementById('current-date').textContent = 'December 31, 2025';
-
-        // Fullscreen for dashboard
+        // Fullscreen toggle
         document.getElementById('fullscreen-btn').addEventListener('click', function() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen();
@@ -561,12 +551,16 @@
                 this.innerHTML = '<i class="fas fa-expand"></i>';
             }
         });
-
-        // Placeholder modal functions (add your full modal JS from original)
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        // Placeholder modal functions
+        function openModal(id) { 
+            const modal = document.getElementById(id);
+            if (modal) modal.style.display = 'flex'; 
+        }
+        function closeModal(id) { 
+            const modal = document.getElementById(id);
+            if (modal) modal.style.display = 'none'; 
+        }
         function openEnhancedMapModal() { openModal('enhanced-map-modal'); }
-        // Add other modal scripts as needed
     </script>
 </body>
 </html>
